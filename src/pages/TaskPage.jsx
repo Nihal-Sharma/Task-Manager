@@ -23,11 +23,11 @@ export default function TaskPage() {
   }, [tasks]);
 
   /**
-   * Handles creating a new task or updating an existing one.
-   * @param {Object} taskData - Data passed from the TaskForm.
-   * @param {string} [taskData.id] - Existing task id (present in edit mode).
-   * @param {string} taskData.title - Task title.
-   * @param {string} taskData.description - Task description.
+   * Handles creating or updating a task.
+   * @param {Object} taskData : Data passed from the TaskForm.
+   * @param {string} [taskData.id] : Existing task id (present in edit mode).
+   * @param {string} taskData.title : Task title.
+   * @param {string} taskData.description : Task description.
    */
   const handleSubmitTask = (taskData) => {
     //  update existing task
@@ -57,7 +57,7 @@ export default function TaskPage() {
 
   /**
    * Marks task as completed or pending.
-   * @param {string} taskId - The id of the task to toggle.
+   * @param {string} taskId  id of the task to toggle.
    */
   const handleToggleComplete = (taskId) => {
     setTasks((prev) =>
@@ -74,7 +74,7 @@ export default function TaskPage() {
 
   /**
    * Deletes a task from the list.
-   * @param {string} taskId - The id of the task to delete.
+   * @param {string} taskId  id of the task to delete.
    */
   const handleDeleteTask = (taskId) => {
     setTasks((prev) => prev.filter((task) => task.id !== taskId));
@@ -88,9 +88,7 @@ export default function TaskPage() {
     setEditingTask(task);
   };
 
-  /**
-   * Cancels edit mode and clears the editing task.
-   */
+  
   const handleCancelEdit = () => {
     setEditingTask(null);
   };
@@ -99,16 +97,16 @@ export default function TaskPage() {
   const filteredTasks = tasks.filter((task) => {
     if (filter === "completed") return task.status === "completed";
     if (filter === "pending") return task.status === "pending";
-    return true; // "all"
+    return true;  
   });
 
   const completedCount = tasks.filter((t) => t.status === "completed").length;
 
   return (
     <section className="space-y-6">
-      {/* Card wrapper */}
+      {/* Card  */}
       <div className="grid gap-4 md:grid-cols-[2fr,1fr]">
-        {/* Left: Form & filter */}
+        {/* Form and filter */}
         <div className="space-y-4">
           <div className="rounded-2xl border bg-white p-4 shadow-sm">
             <div className="mb-3 flex items-center justify-between gap-2">
@@ -142,7 +140,7 @@ export default function TaskPage() {
           </div>
         </div>
 
-        {/* Right: small stats card */}
+        {/*  stats card */}
         <aside className="rounded-2xl border bg-white p-4 shadow-sm">
           <h3 className="mb-2 text-sm font-semibold">Summary</h3>
           <div className="space-y-2 text-sm text-slate-600">
