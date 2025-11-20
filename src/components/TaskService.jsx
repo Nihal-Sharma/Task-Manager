@@ -9,7 +9,6 @@ export const loadTasks = () => {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
-    // Ensure we always return an array
     return Array.isArray(parsed) ? parsed : [];
   } catch (error) {
     console.error("Failed to load tasks from localStorage:", error);

@@ -1,4 +1,4 @@
-import React from "react";
+ 
 
 /**
  * Filter tabs for switching between All , Completed , Pending.

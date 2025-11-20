@@ -1,4 +1,3 @@
-import React from "react";
 
 /**
  * Single task item row.
@@ -8,7 +7,7 @@ import React from "react";
 export default function TaskItem({ task, onToggleComplete, onDelete, onEdit }) {
   const isCompleted = task.status === "completed";
 
-  // Format date in a simple way
+  // Format date in a readabel format
   const createdAt = task.createdAt
     ? new Date(task.createdAt).toLocaleString()
     : "";

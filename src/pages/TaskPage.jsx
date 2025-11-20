@@ -12,18 +12,12 @@ const FILTERS = {
 };
 
 export default function TaskPage() {
-  // ✅ Initialize from localStorage ONCE when component is created
+  // Initialize from localStorage ONCE when component is created
   const [tasks, setTasks] = useState(() => loadTasks());
   const [filter, setFilter] = useState("all");
   const [editingTask, setEditingTask] = useState(null);
 
-  // ❌ REMOVE this (was causing timing issues + double runs in StrictMode)
-  // useEffect(() => {
-  //   const stored = loadTasks();
-  //   setTasks(stored);
-  // }, []);
-
-  // ✅ Save tasks to localStorage whenever they change
+  // Save tasks to localStorage whenever they change
   useEffect(() => {
     saveTasks(tasks);
   }, [tasks]);
@@ -36,7 +30,7 @@ export default function TaskPage() {
    * @param {string} taskData.description - Task description.
    */
   const handleSubmitTask = (taskData) => {
-    // Edit mode: update existing task
+    //  update existing task
     if (taskData.id) {
       setTasks((prev) =>
         prev.map((task) =>
@@ -49,7 +43,7 @@ export default function TaskPage() {
       return;
     }
 
-    // Create mode: add new task
+    //   add new task
     const newTask = {
       id: generateId(),
       title: taskData.title,
@@ -62,7 +56,7 @@ export default function TaskPage() {
   };
 
   /**
-   * Marks a task as completed or pending.
+   * Marks task as completed or pending.
    * @param {string} taskId - The id of the task to toggle.
    */
   const handleToggleComplete = (taskId) => {
@@ -87,7 +81,7 @@ export default function TaskPage() {
   };
 
   /**
-   * Starts editing mode for a specific task.
+   * Starts editing   for a specific task.
    * @param {Object} task - The task to edit.
    */
   const handleEditTask = (task) => {
@@ -101,7 +95,7 @@ export default function TaskPage() {
     setEditingTask(null);
   };
 
-  // Filter tasks based on current filter (All / Completed / Pending)
+  // Filter tasks based on current filter (All , Completed , Pending)
   const filteredTasks = tasks.filter((task) => {
     if (filter === "completed") return task.status === "completed";
     if (filter === "pending") return task.status === "pending";

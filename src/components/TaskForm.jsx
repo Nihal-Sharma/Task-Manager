@@ -10,7 +10,7 @@ export default function TaskForm({ initialValues, onSubmit }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  // When editing, prefill the form with the existing task
+  // When editing, prefill the form with the existing task Data
   useEffect(() => {
     if (initialValues) {
       setTitle(initialValues.title || "");
@@ -26,7 +26,7 @@ export default function TaskForm({ initialValues, onSubmit }) {
     // Simple validation: do not submit empty title
     if (!title.trim()) return;
 
-    // Build the payload; keep id/status if editing
+    // Making the payload, keep id/status if editing
     const payload = {
       ...(initialValues || {}),
       title: title.trim(),
